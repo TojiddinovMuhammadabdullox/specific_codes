@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
         _isFlashlightOn = result;
       });
     } on PlatformException catch (e) {
-      print("Failed to toggle flashlight: '${e.message}'.");
+      // print("Failed to toggle flashlight: '${e.message}'.");
     }
   }
 
@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Flashlight Control'),
+          title: const Text('Flashlight Control'),
           centerTitle: true,
           elevation: 0,
         ),
@@ -51,24 +51,25 @@ class _MyAppState extends State<MyApp> {
                 size: 100,
                 color: _isFlashlightOn ? Colors.yellow : Colors.grey,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Text(
                 _isFlashlightOn ? 'Flashlight On' : 'Flashlight Off',
-                style: TextStyle(fontSize: 24),
+                style: const TextStyle(fontSize: 24),
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               ElevatedButton(
                 onPressed: _toggleFlashlight,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  child: Text(
-                    _isFlashlightOn ? 'Turn Off' : 'Turn On',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ),
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  child: Text(
+                    _isFlashlightOn ? 'Turn Off' : 'Turn On',
+                    style: const TextStyle(fontSize: 18),
                   ),
                 ),
               ),
